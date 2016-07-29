@@ -41,11 +41,17 @@ var app = angular.module('sup', ['ui.router'])
 
 app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {  
 
-    $s.p = 'getTarefas';
+    // $s.p = 'getTarefas';
+    // $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
+    //     $s.tarefas = result;
+    //     console.log($s.tarefas);
+    // });
+
+    $s.p = 'getUsers';
     $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
-        $s.tarefas = result;
-        console.log($s.tarefas);
+        $s.users = result;
     });
+
 
 }]);
 
@@ -69,10 +75,10 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http
     ];
 
 
-    $s.p = 'getUsers';
-    $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
-        $s.users = result;
-    });
+    // $s.p = 'getUsers';
+    // $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
+    //     $s.users = result;
+    // });
 
 }]);
 
