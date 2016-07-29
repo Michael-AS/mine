@@ -41,6 +41,12 @@ var app = angular.module('sup', ['ui.router'])
 
 app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {  
 
+    $s.p = 'getTarefas';
+    $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
+        $s.tarefas = result;
+        console.log($s.tarefas);
+    });
+
 }]);
 
 app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http, $rs) {                  
@@ -67,9 +73,6 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http
     $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
         $s.users = result;
     });
-
-    console.log($s.users);
-
 
 }]);
 

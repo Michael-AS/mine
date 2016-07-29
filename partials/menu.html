@@ -7,7 +7,7 @@
 
     <div class="collapse navbar-collapse" style="margin-left:155px;" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li style="width:170px; border-right:1px solid white" ng-repeat="day in week"><a href="#"><b>{{day}}</b> <span class="sr-only">(current)</span></a></li>
+        <li style="width:190px; border-right:1px solid white" ng-repeat="day in week"><a href="#"><b>{{day}}</b> <span class="sr-only">(current)</span></a></li>
       </ul>
     </div>
     
@@ -19,11 +19,11 @@
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li class="blue darken-4 white-text" ng-repeat="user in users">
+            <li class="{{user.cor}} white-text" ng-repeat="user in users">
                 <b href="#" style="font-size: 16px;">{{user.nome}}</b>
             </li>
         </ul>
     </div>
 </div>
 
-<div style="margin-left:180px;" ui-view></div>  
+<div style="margin-left:150px;" ui-view></div>  
