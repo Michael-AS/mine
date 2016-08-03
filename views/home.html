@@ -1,18 +1,18 @@
 <div class="user col-xs-12" ng-controller="homeCtrl">
 
-<table style="margin:-10px 15px">
-    <tr>
-        <td>
-            <div class="blue white-text card card-1 col-xs-2" ng-repeat="tarefa in tarefas">
-                <div class="card-heading">{{tarefa.descricao}}</div>
-                <div class="card-body">
-                    <h4 class="card-title">{{tarefa.horas}}</h4>       
-                </div>
-            </div>    
-        </td>
-    </tr>
-</table>
-
-   
+<div class="tarefas-body">
+    <table>
+        <tr ng-repeat="user in users">
+            <td ng-repeat="tarefa in user.tarefas">           
+                <div class="{{user.cor}} white-text card card-1 col-xs-2">
+                    <div class="card-heading">{{tarefa.descricao}}</div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{tarefa.horas}}</h4>       
+                    </div>
+                </div>    
+            </td>
+        </tr>
+    </table>
+</div>
 
 </div>

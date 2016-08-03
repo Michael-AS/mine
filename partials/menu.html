@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default blue darken-1">
+<nav class="navbar navbar-default blue darken-1" ng-controller="menuCtrl">
   <div class="container-fluid">
 
     <div class="navbar-header">
@@ -7,13 +7,12 @@
 
     <div class="collapse navbar-collapse" style="margin-left:155px;" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li style="width:190px; border-right:1px solid white" ng-repeat="day in week"><a href="#"><b>{{day}}</b> <span class="sr-only">(current)</span></a></li>
+        <li style="width:190px; border-right:1px solid white" ng-repeat="day in week"><a href="#"><b>{{day}}</b></a></li>
       </ul>
     </div>
     
   </div>
 </nav>
-
 
 <div id="wrapper">
     <!-- Sidebar -->
@@ -25,5 +24,6 @@
         </ul>
     </div>
 </div>
+
 
 <div style="margin-left:150px;" ui-view></div>  

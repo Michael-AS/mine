@@ -23,9 +23,9 @@ function getTarefas($coduser){
 	$aResult = array();
 
 	while($oResult = mysql_fetch_object($oStmt)){
-		$aResult[$oResult->coduser] = $oResult;
+		$aResult[] = $oResult;
 	}
 
-	echo json_encode($aResult);
+	return $aResult;
 }
 ?>
