@@ -1,10 +1,9 @@
 .card{
 	border-radius: 2px;
 	/*margin: 0.3px;*/
-	margin-bottom: 15px;
-	padding: 0px;
-	border: none;
-	margin-left:5px;
+	border: medium none;
+    border-radius: 2px;
+    margin: 5px 3px;
 }
 .card .form-control{
 	border-radius: 0px;
@@ -41,21 +40,30 @@
 	letter-spacing: 1px;
 	border-radius: 2px;
 	padding: 5px;
+	max-height: 50px;
+	text-overflow: hide;
+}
+.card-heading b{
+	text-overflow: hide;
 }
 
 .card-body{
 	text-align: center;
 	margin: 0.1px;
+	padding-bottom: 	3px;
 }
 
 .card-title{
-	border-bottom: 0.5px white solid;
-	border-top: 0.5px white solid;
+	/*border-bottom: 0.5px white solid;*/
+	/*border-top: 0.5px white solid;*/
 }
 
-.card-box{
-	border: 1px white solid;
-	padding: 3px;
+.card-button{
+	margin-bottom: 	5px;
+}
+
+.card-body .btn{
+	padding: 0px 10px !important
 }
 
 .card-footer{
@@ -63,10 +71,6 @@
 	width: 100%;
 	position: absolute;
 }
-
-
-
-
 
 .card-10{
 	height: 350px;
@@ -97,11 +101,17 @@
 	width: 165px;
 }
 .card-1{
-	width: 182px;
-	/*height: 50px;*/
-	margin-left: 9px;
+	width: 180px;
 }
 
 .tarefas-body{
 	margin:-15px 15px;
+}
+
+.week{
+	width:185px; 
+}
+
+.week a{
+	max-width:50px; 
 }

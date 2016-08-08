@@ -41,23 +41,16 @@ var app = angular.module('sup', ['ui.router'])
 
 app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {  
 
-  
-
-
 
 }]);
 
 app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http, $rs) {                  
 
-
     $s.p = 'getUsers';
     $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
+        console.log($s.users);
         $s.users = result;
     });
-
-    $s.showTarefas = function(){
-        console.log($s.users[0].tarefas);
-    }
 
     $s.week = [
     'Segunda',
@@ -65,7 +58,6 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http
     'Quarta',
     'Quinta',
     'Sexta',
-    'Sábado',
     ];
 
 }]);
