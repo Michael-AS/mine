@@ -1,10 +1,18 @@
 <?
 include("conexao.php");
 
+$postdata = file_get_contents("php://input");
+$aDados = json_decode($postdata);
+
+
 $p = $_GET['p'];
 
-// die($p);
+if(empty($_GET['q'])){
+	$q = '';
+} else {
+	$q = $_GET['q'];
+}
 
-call_user_func($p); 
+call_user_func($p, $aDados);
 
 ?>

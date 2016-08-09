@@ -8,5 +8,7 @@ if ($_SERVER['DOCUMENT_ROOT'] == 'C:/Users/Lucas/Documents/GitHub') {
 mysql_select_db("db_sup");
 
 include("dao.php");
+include("daoTarefa.php");
+include("daoUser.php");
 
 ?>

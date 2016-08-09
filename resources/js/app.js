@@ -1,4 +1,4 @@
-var app = angular.module('sup', ['ui.router'])
+var app = angular.module('sup', ['ui.router','ngMask'])
 
 .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("app/Home");
@@ -46,19 +46,37 @@ app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', func
 
 app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http, $rs) {                  
 
-    $s.p = 'getUsers';
-    $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
-        console.log($s.users);
-        $s.users = result;
-    });
+    $s.getUsers = function(){  
+        $s.p = 'getUsers';
+        $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
+            $s.users = result;
+        });
+    }   
 
-    $s.week = [
-    'Segunda',
-    'Terça',
-    'Quarta',
-    'Quinta',
-    'Sexta',
+    $s.semana = [
+        {"coddia":"1", "dia":"Segunda"}, 
+        {"coddia":"2", "dia":"Terça"}, 
+        {"coddia":"3", "dia":"Quarta"}, 
+        {"coddia":"4", "dia":"Quinta"}, 
+        {"coddia":"5", "dia":"Sexta"} 
     ];
+
+    $s.sendTarefa = function(oTarefa){
+        $s.p = 'inputTarefa';
+        console.l
+        $http.post("server/dao/redirect.php?p=" + $s.p, {
+            oTarefa: oTarefa
+        });
+        oTarefa = [];
+    }    
+
+    $s.sendUser = function(oUser){
+        $s.p = 'inputUser';
+        console.l
+        $http.post("server/dao/redirect.php?p=" + $s.p, {
+            oUser: oUser
+        });
+    }
 
 }]);
 
