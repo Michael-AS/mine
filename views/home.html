@@ -7,7 +7,10 @@
             <td class="card card-1">    
                 <div ng-repeat="tarefa in user.segunda">   
                     <div class="{{user.cor}} white-text card card-1 col-xs-2">
-                        <div class="card-heading">{{tarefa.descricao}}<i class="fa fa-info col-xs-2 pull-right"></i></div>
+                        <div class="card-heading">
+                        <label class="col-xs-8">{{tarefa.descricao}}</label>
+
+                        <i class="fa fa-info col-xs-2 pull-right"></i></div>
                              <h5 class="card-title">{{tarefa.horas}}</h5>
                         <div class="card-body">                    
                                 <h5 class="btn btn-success card-button col-xs-4"><i class="fa fa-play"></i></h5>

@@ -11,4 +11,44 @@ include("dao.php");
 include("daoTarefa.php");
 include("daoUser.php");
 
+
+function decodeUT8Array($a) {
+    if (is_object($a)){
+        $a = (array) $a;
+    }
+    if (is_array($a)) {
+        foreach ($a as $c => $v) {
+            $a[$c] = decodeUT8Array($v);
+        }
+    } else {
+        $a = utf8_decode($a);
+    }
+    return $a;
+}
+
+function encodeUT8Array($a) {
+    if (is_object($a)) {
+        $b = (array)$a;
+    } else {
+        $b = $a;
+    }
+    if (is_array($b)) {
+        foreach ($b as $c => $v) {
+            $b[$c] = encodeUT8Array($v);
+        }
+    } else {
+        $b = utf8_encode($b);
+    }
+    return $b;
+}
+
+function stringDecode ($string){
+	return utf8_decode($string);
+}
+
+function stringEncode ($string){
+	return utf8_encode($string);
+}
+
+
 ?>

@@ -46,12 +46,14 @@ app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', func
 
 app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http, $rs) {                  
 
+
     $s.getUsers = function(){  
         $s.p = 'getUsers';
         $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
             $s.users = result;
         });
     }   
+    $s.getUsers();
 
     $s.semana = [
         {"coddia":"1", "dia":"Segunda"}, 
@@ -68,6 +70,7 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http
             oTarefa: oTarefa
         });
         oTarefa = [];
+        $s.getUsers();
     }    
 
     $s.sendUser = function(oUser){
@@ -76,6 +79,7 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http
         $http.post("server/dao/redirect.php?p=" + $s.p, {
             oUser: oUser
         });
+        $s.getUsers();
     }
 
 }]);
