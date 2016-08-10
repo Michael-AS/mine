@@ -1,6 +1,6 @@
 /*
-SQLyog Community v12.2.1 (64 bit)
-MySQL - 10.1.10-MariaDB : Database - db_sup
+SQLyog Community v12.2.4 (64 bit)
+MySQL - 5.6.32 : Database - db_sup
 *********************************************************************
 */
 
@@ -28,7 +28,7 @@ CREATE TABLE `tarefas` (
   `horas` time DEFAULT NULL,
   `obs` text,
   PRIMARY KEY (`codtarefa`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tarefas` */
 
@@ -38,7 +38,15 @@ insert  into `tarefas`(`coduser`,`codtarefa`,`descricao`,`dia`,`horas`,`obs`) va
 (2,3,'Mercado Livre','1','10:00:00',NULL),
 (2,4,'Control DOC','5','20:00:00',NULL),
 (3,6,'EVERYONE!','4','99:00:00',NULL),
-(3,7,'Daby','2','10:00:00',NULL);
+(3,7,'Daby','2','10:00:00',NULL),
+(0,8,'','','00:00:00',''),
+(0,9,'','','00:00:00',''),
+(3,10,'EVERYONE','5','00:00:10','obs maneiro'),
+(1,11,'TESTE','5','00:00:12','OBS'),
+(4,12,'MIL ETIQUETAS','1','12:00:00','testao etiqueta'),
+(5,13,'Site WT','3','10:00:00','MANEIRISSIMO'),
+(7,14,'Tirar o Tenis','1','19:00:00','sempre'),
+(20,15,'Chicotear','4','20:00:00','Com força!');
 
 /*Table structure for table `tarefas_copy` */
 
@@ -72,14 +80,18 @@ CREATE TABLE `users` (
   `cor` varchar(50) DEFAULT NULL,
   `horas` time DEFAULT NULL,
   PRIMARY KEY (`coduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 
 insert  into `users`(`coduser`,`nome`,`cor`,`horas`) values 
 (1,'Lucas','blue darken-5',NULL),
 (2,'Michael','red darken-2',NULL),
-(3,'Hugo','green darken-2',NULL);
+(3,'Hugo','green darken-2',NULL),
+(4,'Pedro','purple darken-2',NULL),
+(5,'César','yellow darken-3',NULL),
+(7,'Mateus','pink',NULL),
+(20,'Fernanda','grey darken-3',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
