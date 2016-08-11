@@ -39,13 +39,15 @@ var app = angular.module('sup', ['ui.router','ngMask'])
     };
 });
 
-app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {  
+app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {
 
+    $s.viewTarefa = function(tarefa){
+        $s.tarefaselecionada = tarefa;
+    }
 
 }]);
 
 app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http, $rs) {                  
-
 
     $s.getUsers = function(){  
         $s.p = 'getUsers';

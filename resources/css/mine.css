@@ -1,9 +1,9 @@
 .card{
-	border-radius: 2px;
-	/*margin: 0.3px;*/
 	border: medium none;
     border-radius: 2px;
-    margin: 8px 3px;
+    margin-bottom: 1px;
+    margin-left: 3px;
+    margin-top: 1px;
 }
 .card .form-control{
 	border-radius: 0px;
@@ -33,19 +33,23 @@
 
 .card-heading{
 	top: 0px;
-	width: 100%;
 	border-bottom: 4px white;
 	text-transform: uppercase;
 	font-weight: bold;
 	letter-spacing: 1px;
-	border-radius: 2px;
-	padding: 5px;
-	max-height: 50px;
-	text-overflow: hide;
+	border-radius: 2px;	
 }
+
 .card-heading b{
-	text-overflow: hide;
+	font-size: 12px;
 }
+
+.card-heading button{
+	margin-bottom: 3px;
+	margin-top: 3px;
+	height: 25px;
+}
+
 
 .card-body{
 	text-align: center;
@@ -102,10 +106,11 @@
 }
 .card-1{
 	width: 180px;
+	height: 80px;
 }
 
 .tarefas-body{
-	margin:-15px 15px;
+	margin:-20px 15px;
 }
 
 .week{
