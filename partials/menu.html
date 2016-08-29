@@ -1,23 +1,19 @@
-<nav class="navbar navbar-default blue darken-1" ng-controller="menuCtrl">
-  <div class="container-fluid">
-
-    <div class="navbar-header" style="margin-top: 5px">
-      <button class="btn btn-success" ng-click="newTarefaModal()" data-toggle="modal" data-target="#userModal"><i class="fa fa-user-plus"></i></button>
-      <button class="btn btn-warning" ng-click="newTarefaModal()" data-toggle="modal" data-target="#tarefaModal"><i class="fa fa-calendar-plus-o"></i></button>
-      <button class="btn btn-info" ng-click="newTarefaModal()" data-toggle="modal" data-target="#lembreteModal"><i class="fa fa-clock-o"></i></button>
-    </div>
-
-    <div class="collapse navbar-collapse" style="margin-left:150px;" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="week" ng-repeat="dia in semana"><a href="#"><b>{{dia.dia}}</b></a></li>
-      </ul>
-    </div>
-    
+<nav>
+  <div class="nav-wrapper blue">
+    <a href="#" class="brand-logo">Logo</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="sass.html">Sass</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <li><a href="collapsible.html">JavaScript</a></li>
+    </ul>
   </div>
 </nav>
 
-<div id="wrapper">
-    <!-- Sidebar -->
+
+<div ui-view></div>  
+
+
+<!-- <div id="wrapper">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="{{user.cor}} white-text" ng-repeat="user in users">
@@ -25,139 +21,4 @@
             </li>
         </ul>
     </div>
-</div>
-
-<div style="margin-left:150px;" ui-view></div>  
-
-<!-- Modal Tarefa -->
-<div class="modal fade" id="tarefaModal" tabindex="-1" role="dialog" aria-labelledby="tarefaModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Nova tarefa</h4>
-      </div>
-      <div class="modal-body">
-          <form class="form-horizontal">
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Usuário</label>
-              <div class="col-sm-10">
-                <select class="form-control" 
-                ng-options="user.coduser as user.nome for user in users" ng-model="oTarefa.coduser"></select>
-              </div>
-            </div>      
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Descrição</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Descrição" ng-model="oTarefa.descricao">
-              </div>
-            </div>           
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Dia</label>
-              <div class="col-sm-10">
-                <select class="form-control" ng-options="dia.coddia as dia.dia for dia in semana" ng-model="oTarefa.coddia"></select>
-              </div>
-            </div>     
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Horas</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" mask="99:99" placeholder="Estimativa de tempo" ng-model="oTarefa.horas" >
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Obs</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Observações" ng-model="oTarefa.obs" >
-              </div>
-            </div>
-
-          </form>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="sendTarefa(oTarefa)" data-dismiss="modal">Criar Tarefa</button>
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- Modal User -->
-<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Novo usuário</h4>
-      </div>
-      <div class="modal-body">
-          <form class="form-horizontal">
-    
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Nome</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Nome" ng-model="oUser.nome">
-              </div>
-            </div>           
-   
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Tema</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" ng-model="oUser.cor" >
-              </div>
-            </div>
-
-          </form>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="sendUser(oUser)" data-dismiss="modal">Criar Usuário</button>
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- Modal Lembrete -->
-<div class="modal fade" id="lembreteModal" tabindex="-1" role="dialog" aria-labelledby="lembreteModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Novo usuário</h4>
-      </div>
-      <div class="modal-body">
-          <form class="form-horizontal">
-    
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Descrição</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Nome" ng-model="oLembrete.descricao">
-              </div>
-            </div>           
-   
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Tema</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" ng-model="oLembrete.horas" >
-              </div>
-            </div>
-
-          </form>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="sendLembrete(oLembrete)" data-dismiss="modal">Criar Usuário</button>
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
-      </div>
-
-    </div>
-  </div>
-</div>
+</div> -->

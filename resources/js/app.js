@@ -57,12 +57,10 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http
     }   
     $s.getUsers();
 
-    $s.semana = [
-        {"coddia":"1", "dia":"Segunda"}, 
-        {"coddia":"2", "dia":"Terça"}, 
-        {"coddia":"3", "dia":"Quarta"}, 
-        {"coddia":"4", "dia":"Quinta"}, 
-        {"coddia":"5", "dia":"Sexta"} 
+    $s.aStatus = [
+        {"status":"todo", "apelido":"TO DO"}, 
+        {"status":"doing", "apelido":"DOING"}, 
+        {"status":"done", "apelido":"DONE"}
     ];
 
     $s.sendTarefa = function(oTarefa){
