@@ -5,11 +5,13 @@ if ($_SERVER['DOCUMENT_ROOT'] == 'C:/Users/Lucas/Documents/GitHub') {
 	mysql_connect('localhost','root','');
 }
 
-mysql_select_db("db_sup");
+mysql_select_db("db_lucas");
 
 include("dao.php");
+
 include("daoTarefa.php");
-include("daoUser.php");
+include("daoCusto.php");
+include("daoHora.php");
 
 
 function decodeUT8Array($a) {

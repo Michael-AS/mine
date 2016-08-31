@@ -13,6 +13,7 @@ if(empty($_GET['q'])){
 	$q = $_GET['q'];
 }
 
+// echo "<pre>"; print_r($aDados); die();
 call_user_func($p, $aDados);
 
 ?>
