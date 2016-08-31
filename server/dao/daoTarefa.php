@@ -8,11 +8,20 @@ function inputTarefa($aDados){
 
 
 	$sQuery = "INSERT INTO tarefas SET "
-						."coduser = " . $aDados->oTarefa->coduser . ", "
-						."descricao = '".utf8_decode($aDados->oTarefa->descricao)."' , "									
-						."dia = '".utf8_decode($aDados->oTarefa->coddia)."' , "			
-						."horas = '".utf8_decode($aDados->oTarefa->horas)."' , "			
-						."obs = '".utf8_decode($aDados->oTarefa->obs)."' ";								
+						."descricao = '" . $aDados->oTarefa->descricao . "', "					
+						."dia = '" . $aDados->oTarefa->dia . "', "
+						."dtcadastro = NOW()";								
+											
+	mysql_query($sQuery) or die($sQuery . mysql_error()); 
+}
+
+function deleteTarefa($aDados){
+
+	echo 'Delete Tarefa';
+	echo '<pre>';
+	print_r($aDados->oTarefa);
+
+	$sQuery = "DELETE FROM tarefas WHERE codhora = '" . $aDados->oTarefa->codtarefa . "' ";						
 											
 	mysql_query($sQuery) or die($sQuery . mysql_error()); 
 }
