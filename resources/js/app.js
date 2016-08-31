@@ -49,62 +49,38 @@ app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', func
 
 app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http, $rs) {                  
 
-    $s.getCustos = function(){  
-        $s.p = 'getCustos';
+    $s.getUsers = function(){  
+        $s.p = 'getUsers';
         $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
-            $s.custos = result;
+            $s.users = result;
         });
     }   
+    $s.getUsers();
 
-    $s.getTarefas = function(){  
-        $s.p = 'getTarefas';
-        $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
-            $s.tarefas = result;
-        });
-    }   
-
-    $s.getHoras = function(){  
-        $s.p = 'getHoras';
-        $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
-            $s.horas = result;
-        });
-    }
-
-
-    $s.getCustos();
-    $s.getTarefas();
-    $s.getHoras();
-
-
-     $s.sendHora = function(oHora){
-        $s.p = 'inputHora';
-        $http.post("server/dao/redirect.php?p=" + $s.p, {
-            oHora: oHora
-        });
-        oHora = [];
-        $s.getHoras();
-    }    
-
-    $s.sendCusto = function(oCusto){
-        console.log(oCusto);
-        $s.p = 'inputCusto';
-        $http.post("server/dao/redirect.php?p=" + $s.p, {
-            oCusto: oCusto
-        });
-        oCusto = [];
-        $s.getCustos();
-    }    
+    $s.aStatus = [
+        {"status":"todo", "apelido":"TO DO"}, 
+        {"status":"doing", "apelido":"DOING"}, 
+        {"status":"done", "apelido":"DONE"}
+    ];
 
     $s.sendTarefa = function(oTarefa){
         $s.p = 'inputTarefa';
+        console.l
         $http.post("server/dao/redirect.php?p=" + $s.p, {
             oTarefa: oTarefa
         });
         oTarefa = [];
-        $s.getTarefas();
-    }     
+        $s.getUsers();
+    }    
 
-    
+    $s.sendUser = function(oUser){
+        $s.p = 'inputUser';
+        console.l
+        $http.post("server/dao/redirect.php?p=" + $s.p, {
+            oUser: oUser
+        });
+        $s.getUsers();
+    }
 
 }]);
 

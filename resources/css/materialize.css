@@ -4658,7 +4658,7 @@ small {
 }
 
 .card .card-content {
-  padding: 3px;
+  padding: 20px;
   border-radius: 0 0 2px 2px;
 }
 
@@ -4675,7 +4675,7 @@ small {
   position: relative;
   background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
-  padding: 3px;
+  padding: 20px;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
