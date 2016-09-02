@@ -3202,6 +3202,7 @@ span.badge.new {
   color: #fff;
   background-color: #26a69a;
   border-radius: 2px;
+  margin-right: 35px;
 }
 
 span.badge.new:after {

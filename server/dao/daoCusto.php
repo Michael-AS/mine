@@ -14,13 +14,12 @@ function inputCusto($aDados){
 	mysql_query($sQuery) or die($sQuery . mysql_error()); 
 }
 
-function deleteCusto($aDados){
+function deleteCusto($cod){
 
 	echo 'Delete Custo';
 	echo '<pre>';
-	print_r($aDados->oCusto);
 
-	$sQuery = "DELETE FROM custos WHERE codcusto = '" . $aDados->oCusto->codcusto . "' ";						
+	$sQuery = "DELETE FROM custos WHERE codcusto = '" . $cod . "' ";						
 											
 	mysql_query($sQuery) or die($sQuery . mysql_error()); 
 }

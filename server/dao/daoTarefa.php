@@ -15,13 +15,12 @@ function inputTarefa($aDados){
 	mysql_query($sQuery) or die($sQuery . mysql_error()); 
 }
 
-function deleteTarefa($aDados){
+function deleteTarefa($cod){
 
 	echo 'Delete Tarefa';
 	echo '<pre>';
-	print_r($aDados->oTarefa);
 
-	$sQuery = "DELETE FROM tarefas WHERE codhora = '" . $aDados->oTarefa->codtarefa . "' ";						
+	$sQuery = "DELETE FROM tarefas WHERE codtarefa = '" . $cod . "' ";						
 											
 	mysql_query($sQuery) or die($sQuery . mysql_error()); 
 }

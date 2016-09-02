@@ -8,19 +8,19 @@ function inputHora($aDados){
 
 	$sQuery = "INSERT INTO horas SET "
 						."descricao = '" . $aDados->oHora->descricao . "', "					
-						."horas = '" . $aDados->oHora->horas . "', "
+						."horas = '" . $aDados->oHora->horas . ":00:00', "
 						."dtcadastro = NOW()";								
 											
 	mysql_query($sQuery) or die($sQuery . mysql_error()); 
+
 }
 
-function deleteHora($aDados){
+function deleteHora($cod){
 
 	echo 'Delete Hora';
 	echo '<pre>';
-	print_r($aDados->oHora);
 
-	$sQuery = "DELETE FROM horas WHERE codhora = '" . $aDados->oHora->codhora . "' ";						
+	$sQuery = "DELETE FROM horas WHERE codhora = '" . $cod . "' ";					
 											
 	mysql_query($sQuery) or die($sQuery . mysql_error()); 
 }

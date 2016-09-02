@@ -1,4 +1,4 @@
-/*
+﻿/*
 SQLyog Community v12.2.4 (64 bit)
 MySQL - 5.6.32 : Database - db_lucas
 *********************************************************************
@@ -14,7 +14,7 @@ MySQL - 5.6.32 : Database - db_lucas
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_lucas` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
-USE `db_lucas`;
+USE `db_mine`;
 
 /*Table structure for table `custos` */
 

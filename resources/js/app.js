@@ -1,4 +1,4 @@
-var app = angular.module('sup', ['ui.router','ngMask'])
+var app = angular.module('mine', ['ui.router','ngMask'])
 
 .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("app/Home");
@@ -67,16 +67,10 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http
         $s.p = 'getHoras';
         $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
             $s.horas = result;
-        });
+        }); 
     }
 
-
-    $s.getCustos();
-    $s.getTarefas();
-    $s.getHoras();
-
-
-     $s.sendHora = function(oHora){
+    $s.sendHora = function(oHora){
         $s.p = 'inputHora';
         $http.post("server/dao/redirect.php?p=" + $s.p, {
             oHora: oHora
@@ -104,7 +98,28 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http
         $s.getTarefas();
     }     
 
+    $s.getCustos();
+    $s.getTarefas();
+    $s.getHoras();
     
+
+    $s.deleteHora = function(codhora){
+        $s.p = 'deleteHora';
+        $http.post("server/dao/redirect.php?p=" + $s.p, codhora);
+        $s.getHoras();
+    }    
+
+    $s.deleteCusto = function(codcusto){
+        $s.p = 'deleteCusto';
+        $http.post("server/dao/redirect.php?p=" + $s.p, codcusto);
+        $s.getCustos();
+    }    
+
+    $s.deleteTarefa = function(codtarefa){
+        $s.p = 'deleteTarefa';
+        $http.post("server/dao/redirect.php?p=" + $s.p, codtarefa);
+        $s.getTarefas();
+    }     
 
 }]);
 

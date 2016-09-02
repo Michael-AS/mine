@@ -4,6 +4,19 @@
 
     <div class="row">
 
+
+    <div class="collection red white-text col s3">
+      <li class="collection-header"><h4>Horas</h4></li>
+    </div>
+
+    <div class="collection blue white-text col s6">
+       <li class="collection-header"><h4>Horas</h4></li>
+    </div>
+
+    <div class="collection green white-text col s3">
+       <li class="collection-header"><h4>Horas</h4></li>
+    </div>
+
       <div class="col s3">
         <div class="card">
           <div class="card-content">
@@ -35,7 +48,7 @@
       <div class="col s3">
         <div class="card">
           <div class="card-content">
-             <div class="row">
+             <div class="row">             
               <div class="input-field">
                 <input value="" ng-model="oCusto.descricao" type="text" placeholder="Descrição" class="validate col s5">
                 <input value="" ng-model="oCusto.valor" type="text" placeholder="Valor" class="validate col s5">
@@ -48,18 +61,21 @@
 
     </div>
 
-
     <div class="collection col s3">
-      <a href="#!" ng-repeat="hora in horas" class="collection-item">{{hora.descricao}}<span class="new badge" data-badge-caption="Horas">{{hora.horas}}</span><i class="fa fa-times right"></i></a>
-
+      <a href="#!" ng-repeat="hora in horas" class="collection-item">{{hora.descricao}}
+      <span class="red new badge" data-badge-caption="">{{hora.horas}}</span><i class="fa fa-times right" ng-click="deleteHora(hora.codhora)"></i></a>
     </div>
+
 
     <div class="collection col s6">
-      <a href="#!" ng-repeat="tarefa in tarefas" class="collection-item">{{tarefa.descricao}}<span class="new badge">{{tarefa.data}}</span></a>
+      <a href="#!" ng-repeat="tarefa in tarefas" class="collection-item">{{tarefa.descricao}}
+      <span class="blue new badge" data-badge-caption="">{{tarefa.dia}}</span><i class="fa fa-times right" ng-click="deleteTarefa(tarefa.codtarefa)"></i></a>
     </div>
 
+
     <div class="collection col s3"> 
-      <a href="#!" ng-repeat="custo in custos" class="collection-item">{{custo.descricao}}<span class="badge">{{custo.valor | currency: 'R$'}}</span></a>
+      <a href="#!" ng-repeat="custo in custos" class="collection-item">{{custo.descricao}}
+      <span class="green new badge" data-badge-caption="">{{custo.valor | currency: 'R$'}}</span><i class="fa fa-times right" ng-click="deleteCusto(custo.codcusto)"></i></a>
     </div>
 
 </div>
