@@ -1,4 +1,4 @@
-var app = angular.module('mine', ['ui.router','ngMask'])
+var app = angular.module('mine', ['ui.router','ngMask','720kb.datepicker'])
 
 .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("app/Home");
@@ -74,9 +74,8 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http
         $s.p = 'inputHora';
         $http.post("server/dao/redirect.php?p=" + $s.p, {
             oHora: oHora
-        });
-        oHora = [];
-        $s.getHoras();
+        }).success($s.getHoras());
+        oHora = [];        
     }    
 
     $s.sendCusto = function(oCusto){
@@ -84,42 +83,50 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http
         $s.p = 'inputCusto';
         $http.post("server/dao/redirect.php?p=" + $s.p, {
             oCusto: oCusto
-        });
+        }).success($s.getCustos());
         oCusto = [];
-        $s.getCustos();
     }    
 
     $s.sendTarefa = function(oTarefa){
         $s.p = 'inputTarefa';
         $http.post("server/dao/redirect.php?p=" + $s.p, {
             oTarefa: oTarefa
-        });
+        }).success($s.getTarefas());
         oTarefa = [];
-        $s.getTarefas();
     }     
 
     $s.getCustos();
     $s.getTarefas();
     $s.getHoras();
     
+    $s.updateAll = function (){
+        $s.getCustos();
+        $s.getTarefas();
+        $s.getHoras();
+    }
 
     $s.deleteHora = function(codhora){
         $s.p = 'deleteHora';
-        $http.post("server/dao/redirect.php?p=" + $s.p, codhora);
-        $s.getHoras();
+        $http.post("server/dao/redirect.php?p=" + $s.p, codhora).success($s.getHoras());
+        
     }    
 
     $s.deleteCusto = function(codcusto){
         $s.p = 'deleteCusto';
-        $http.post("server/dao/redirect.php?p=" + $s.p, codcusto);
-        $s.getCustos();
+        $http.post("server/dao/redirect.php?p=" + $s.p, codcusto).success($s.getCustos());
+        
     }    
 
     $s.deleteTarefa = function(codtarefa){
         $s.p = 'deleteTarefa';
-        $http.post("server/dao/redirect.php?p=" + $s.p, codtarefa);
-        $s.getTarefas();
+        $http.post("server/dao/redirect.php?p=" + $s.p, codtarefa).success($s.getTarefas());
+        
     }     
+
+    $s.changeTarefa = function(codtarefa){
+        $s.p = 'changeTarefa';
+        $http.post("server/dao/redirect.php?p=" + $s.p, codtarefa).success($s.getTarefas());
+    }
 
 }]);
 

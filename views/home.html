@@ -5,16 +5,19 @@
     <div class="row">
 
 
-    <div class="collection red white-text col s3">
-      <li class="collection-header"><h4>Horas</h4></li>
+    <div class="collection green white-text col s3" ng-click="updateAll()">
+      <li class="collection-header col s10"><h5>Horas</h5></li>
+        <i class="fa fa-clock-o right col s2"  style="font-size: 30px; margin-top:15px"></i>
     </div>
 
-    <div class="collection blue white-text col s6">
-       <li class="collection-header"><h4>Horas</h4></li>
+    <div class="collection blue white-text col s6" ng-click="updateAll()">
+       <li class="collection-header col s11"><h5>Tarefas</h5></li>
+       <i class="fa fa-tasks right col s1"  style="font-size: 30px; margin-top:15px"></i>
     </div>
 
-    <div class="collection green white-text col s3">
-       <li class="collection-header"><h4>Horas</h4></li>
+    <div class="collection red white-text col s3" ng-click="updateAll()">
+       <li class="collection-header col s10"><h5>Custos</h5></li>
+       <i class="fa fa-credit-card right col s2"  style="font-size: 30px; margin-top:15px"></i>
     </div>
 
       <div class="col s3">
@@ -24,7 +27,7 @@
               <div class="input-field">
                 <input value="" ng-model="oHora.descricao" type="text" placeholder="Descrição" class="validate col s5">
                 <input value="" ng-model="oHora.horas" type="text" placeholder="Horas" class="validate col s5">                
-                <button class="btn red col s2" ng-click="sendHora(oHora)"><i class="fa fa-plus"></i></button>
+                <button class="btn green col s2" ng-click="sendHora(oHora)"><i class="fa fa-plus"></i></button>
               </div>
             </div>
           </div>
@@ -36,8 +39,12 @@
           <div class="card-content">
              <div class="row">
               <div class="input-field">
-                <input value="" ng-model="oTarefa.descricao" type="text" placeholder="Descrição" class="validate col s5">
-                <input value="" ng-model="oTarefa.dia" type="text" placeholder="Data" class="validate col s5">
+                <input value="" ng-model="oTarefa.descricao" type="text" placeholder="Descrição" class="validate col s8">
+
+                  <datepicker class="col s2" date-format="dd/MM/yyyy">
+                    <input value="" ng-model="oTarefa.dia" type="text" placeholder="Data">
+                  </datepicker>
+
                 <button class="btn blue col s2" ng-click="sendTarefa(oTarefa)"><i class="fa fa-plus"></i></button>
               </div>
             </div>
@@ -52,7 +59,7 @@
               <div class="input-field">
                 <input value="" ng-model="oCusto.descricao" type="text" placeholder="Descrição" class="validate col s5">
                 <input value="" ng-model="oCusto.valor" type="text" placeholder="Valor" class="validate col s5">
-                <button class="btn green col s2" ng-click="sendCusto(oCusto)"><i class="fa fa-plus"></i></button>
+                <button class="btn red col s2" ng-click="sendCusto(oCusto)"><i class="fa fa-plus"></i></button>
               </div>
             </div>
           </div>
@@ -63,19 +70,27 @@
 
     <div class="collection col s3">
       <a href="#!" ng-repeat="hora in horas" class="collection-item">{{hora.descricao}}
-      <span class="red new badge" data-badge-caption="">{{hora.horas}}</span><i class="fa fa-times right" ng-click="deleteHora(hora.codhora)"></i></a>
+      <span class="green new badge" data-badge-caption="">{{hora.horas}}</span><i class="fa fa-times right" ng-click="deleteHora(hora.codhora)"></i></a>
     </div>
 
 
     <div class="collection col s6">
-      <a href="#!" ng-repeat="tarefa in tarefas" class="collection-item">{{tarefa.descricao}}
-      <span class="blue new badge" data-badge-caption="">{{tarefa.dia}}</span><i class="fa fa-times right" ng-click="deleteTarefa(tarefa.codtarefa)"></i></a>
+
+      <a href="#!" ng-repeat="tarefa in tarefas" class="collection-item" ng-class="{'active' : tarefa.status == 1}">{{tarefa.descricao}}
+
+      <i ng-click="changeTarefa(tarefa.codtarefa)" ng-show="tarefa.status == 0" class="fa fa-square-o left"></i>
+      <i ng-click="changeTarefa(tarefa.codtarefa)" ng-show="tarefa.status == 1" class="fa fa-check-square left"></i>
+
+
+        <span class="blue new badge" data-badge-caption="">{{tarefa.dia}}</span>
+        <i class="fa fa-times right" ng-click="deleteTarefa(tarefa.codtarefa)"></i>
+      </a>
     </div>
 
 
     <div class="collection col s3"> 
       <a href="#!" ng-repeat="custo in custos" class="collection-item">{{custo.descricao}}
-      <span class="green new badge" data-badge-caption="">{{custo.valor | currency: 'R$'}}</span><i class="fa fa-times right" ng-click="deleteCusto(custo.codcusto)"></i></a>
+      <span class="red new badge" data-badge-caption="">{{custo.valor | currency: 'R$'}}</span><i class="fa fa-times right" ng-click="deleteCusto(custo.codcusto)"></i></a>
     </div>
 
 </div>

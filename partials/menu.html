@@ -1,24 +1,16 @@
-<nav>
-  <div class="nav-wrapper blue">
+<nav ng-controller="menuCtrl">
+  <div class="nav-wrapper purple">
     <a href="#" class="brand-logo"></a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a href="sass.html">Tarefas</a></li>
-      <li><a href="badges.html">Custos</a></li>
-      <li><a href="collapsible.html">Horas</a></li>
+      <li><a href="#">Pessoal</a></li>
+      <li><a href="#">Trabalho</a></li>
+    </ul>    
+
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li ng-click="updateAll()"><a href="#"><i class="fa fa-refresh"></i></a></li>
     </ul>
+
   </div>
 </nav>
 
-
 <div ui-view></div>  
-
-
-<!-- <div id="wrapper">
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="{{user.cor}} white-text" ng-repeat="user in users">
-                <b href="#" style="font-size: 16px;">{{user.nome}}</b>
-            </li>
-        </ul>
-    </div>
-</div> -->
