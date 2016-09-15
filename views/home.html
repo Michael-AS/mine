@@ -62,13 +62,12 @@
 
     <div class="collection">
 
-      <a href="#!" ng-repeat="tarefa in tarefas" class="collection-item" ng-class="{'active' : tarefa.status == 1}">{{tarefa.descricao}}
+      <a href="#!" ng-repeat="tarefa in tarefas" class="collection-item" ng-class="{'active' : tarefa.status == 1, 'yellow darken-2' : tarefa.status == 2}">{{tarefa.descricao}}
 
       <i ng-click="changeTarefa(tarefa.codtarefa)" ng-show="tarefa.status == 0" class="fa fa-square-o left"></i>
       <i ng-click="changeTarefa(tarefa.codtarefa)" ng-show="tarefa.status == 1" class="fa fa-check-square left"></i>
 
-
-        <span class="blue new badge" data-badge-caption="">{{tarefa.dia}}</span>
+        <span class="blue new badge" data-badge-caption="">{{tarefa.dia | date:"dd/MM/yyyy"}}</span>
         <i class="fa fa-times right" ng-click="deleteTarefa(tarefa.codtarefa)"></i>
       </a>
     </div>

@@ -7,7 +7,7 @@ function inputCusto($aDados){
 	print_r($aDados->oCusto);
 
 	$sQuery = "INSERT INTO custos SET "
-						."descricao = '" . $aDados->oCusto->descricao . "', "					
+						."descricao = '" . stringDecode($aDados->oCusto->descricao) . "', "					
 						."valor = '" . $aDados->oCusto->valor . "', "
 						."dtcadastro = NOW()";								
 											

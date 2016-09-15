@@ -10,7 +10,6 @@ function getTarefas(){
 		array_push($aResult, encodeUT8Array($oResult));
 	}
 
-
 	echo json_encode($aResult);
 }
 
@@ -25,7 +24,6 @@ function getHoras(){
 		array_push($aResult, encodeUT8Array($oResult));
 	}
 
-
 	echo json_encode($aResult);
 }
 
@@ -38,7 +36,6 @@ function getCustos(){
 		$oResult->total = mysql_num_rows($oStmt);
 		array_push($aResult, encodeUT8Array($oResult));
 	}
-
 
 	echo json_encode($aResult);
 }

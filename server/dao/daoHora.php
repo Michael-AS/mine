@@ -7,7 +7,7 @@ function inputHora($aDados){
 	print_r($aDados->oHora);
 
 	$sQuery = "INSERT INTO horas SET "
-						."descricao = '" . $aDados->oHora->descricao . "', "					
+						."descricao = '" . stringDecode($aDados->oHora->descricao) . "', "					
 						."horas = '" . $aDados->oHora->horas . ":00:00', "
 						."dtcadastro = NOW()";								
 											

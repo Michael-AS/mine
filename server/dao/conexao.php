@@ -5,6 +5,8 @@ if ($_SERVER['DOCUMENT_ROOT'] == 'C:/Users/Lucas/Documents/GitHub') {
 	mysql_connect('localhost','root','');
 }
 
+// mysql_connect('lucans.com.br','lucas','meupenis');
+
 mysql_select_db("db_lucas");
 
 include("dao.php");
@@ -25,7 +27,7 @@ function decodeUT8Array($a) {
     } else {
         $a = utf8_decode($a);
     }
-    return $a;
+    return (object)$a;
 }
 
 function encodeUT8Array($a) {
