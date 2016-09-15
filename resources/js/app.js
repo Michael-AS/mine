@@ -12,6 +12,11 @@ var app = angular.module('mine', ['ui.router','ngMask','720kb.datepicker'])
           url: "/Home",
           templateUrl: "views/home.html",
           controller: "homeCtrl"
+        })        
+        .state('menu.login', {
+          url: "/Login",
+          templateUrl: "partials/login.html",
+          controller: "menuCtrl"
         })
 }) 
 
@@ -47,7 +52,41 @@ app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', func
 
 }]);
 
-app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http, $rs) {                  
+app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', function ($s, $http, $rs, $location) {            
+        
+    $s.teste = function(){
+        console.log("working");
+    }
+        
+    $s.showToast = function(message){
+        Materialize.toast(message, 3000);
+    };
+
+   $s.goRota = function(rota){ 
+        if (rota) {
+            $location.path(rota);
+        }
+    };
+
+    $s.verificaUserSession = function(){
+        $s.p = 'verifyUserSession';
+        $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
+            if (result != 'false') {                    
+                $rs.user = result[0];
+            } else {
+                $s.showToast("Sessão expirada!");
+                $s.goRota('/Login');                
+            }    
+        });
+    };
+
+    $s.userAuth = function(oUser){            
+        $s.p = 'userAuth';
+        $http.post("server/dao/redirect.php?p=" + $s.p, {
+            oUser: oUser            
+        });
+        $s.goRota('Home');        
+    };         
 
     $s.getCustos = function(){  
         $s.p = 'getCustos';
@@ -58,7 +97,7 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope', function ($s, $http
 
     $s.getTarefas = function(){  
         $s.p = 'getTarefas';
-        $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
+        $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {            
             $s.tarefas = result;
         });
     }   
