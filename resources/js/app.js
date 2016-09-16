@@ -13,7 +13,7 @@ var app = angular.module('mine', ['ui.router','ngMask','720kb.datepicker'])
           templateUrl: "views/home.html",
           controller: "homeCtrl"
         })        
-        .state('menu.login', {
+        .state('login', {
           url: "/Login",
           templateUrl: "partials/login.html",
           controller: "menuCtrl"

@@ -5,13 +5,9 @@ if ($_SERVER['DOCUMENT_ROOT'] == 'C:/Users/Lucas/Documents/GitHub') {
 	mysql_connect('localhost','root','');
 }
 
-<<<<<<< HEAD
-// mysql_connect('lucans.com.br','lucas','meupenis');
-
-=======
 
 // mysql_connect('www.lucans.com.br','lucas','meupenis');
->>>>>>> b7c7907a9105c350ddff20be1f43fc25a3ab0462
+
 mysql_select_db("db_lucas");
 
 include("dao.php");
