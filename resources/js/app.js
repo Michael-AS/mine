@@ -93,11 +93,29 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
         $s.goRota('Home');        
     };         
 
+
+    $s.getTotal = function(oDados){          
+        $s.p = 'getTotal';
+        $http.post("server/dao/redirect.php?p=" + $s.p, {
+            oDados: oDados
+        }).success(function(result){
+            $s.total = result;
+        });
+        return $s.total;
+    }  
+
+
     $s.getCustos = function(){  
         $s.p = 'getCustos';
         $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
             $s.custos = result;
         });
+
+        oDados = [];
+        oDados.field = 'valor';
+        oDados.table = 'custos';
+
+        $s.total_custo = $s.getTotal(oDados);
     }   
 
     $s.getTarefas = function(){  
@@ -139,9 +157,6 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
         oTarefa = [];
     }     
 
-    $s.getCustos();
-    $s.getTarefas();
-    $s.getHoras();
     
     $s.updateAll = function (){
         $s.getCustos();
@@ -171,6 +186,10 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
         $s.p = 'changeTarefa';
         $http.post("server/dao/redirect.php?p=" + $s.p, codtarefa).success($s.getTarefas());
     }
+
+    $s.getCustos();
+    $s.getTarefas();
+    $s.getHoras();
 
 }]);
 
