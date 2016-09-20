@@ -1,4 +1,4 @@
-var app = angular.module('mine', ['ui.router','ngMask','720kb.datepicker'])
+﻿var app = angular.module('mine', ['ui.router','ngMask','720kb.datepicker'])
 
 .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("app/Home");
@@ -12,6 +12,11 @@ var app = angular.module('mine', ['ui.router','ngMask','720kb.datepicker'])
           url: "/Home",
           templateUrl: "views/home.html",
           controller: "homeCtrl"
+        })             
+        .state('land', {
+          url: "/Land",
+          templateUrl: "views/land.html",
+          controller: "landCtrl"
         })        
         .state('login', {
           url: "/Login",
