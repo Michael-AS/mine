@@ -25,7 +25,6 @@ function getHoras(){
 		array_push($aResult, encodeUT8Array($oResult));
 	}
 
-	$aResult['total'] = getTotal('horas', 'horas');
 	echo json_encode($aResult);
 }
 
@@ -37,16 +36,17 @@ function getCustos(){
 	while($oResult = mysql_fetch_object($oStmt)){		
 		array_push($aResult, encodeUT8Array($oResult));
 	}
-
-	$aResult['total'] = getTotal('valor', 'custos');
 	echo json_encode($aResult);
 }
 
-function getTotal($field, $table){
-	$sQuery = "SELECT SUM($field) as total FROM $table ORDER BY dtcadastro DESC";
+function getTotal($aDados){
+		die(print_r($aDados));
+	$sQuery = "SELECT SUM(" . $aDados->field . ") as total FROM '" . $aDados->table . "' ORDER BY dtcadastro DESC";
+
+	die($sQuery);
 	$oStmt = mysql_query($sQuery) or die($sQuery . mysql_error()); 
 	$fResult = mysql_result($oStmt, 0);
 
-	return $fResult;
+	echo json_encode($fResult);
 }
 ?>
