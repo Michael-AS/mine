@@ -15,6 +15,7 @@ function inputTarefa($aDados){
 						."descricao = '" . stringDecode($aDados->oTarefa->descricao) . "', "					
 						."dia = '" . $aDados->oTarefa->dia . "', "
 						."status = '0', "
+						."coduser = '" . $_SESSION['user'][0]['coduser'] . "', "
 						."dtcadastro = NOW()";								
 											
 	mysql_query($sQuery) or die($sQuery . mysql_error()); 

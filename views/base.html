@@ -2,7 +2,7 @@
   <div class="row">
 
     <!-- BASE -->
-    <div class="row col s8 offset-s2">
+    <div class="row col s4">
 
       <div class="collection orange darken-2 white-text" ng-click="getBases()">
         <li class="collection-header">
@@ -26,29 +26,34 @@
                   </div>
                 </form>
 
-              <button class="btn orange darken-2 col s1" ng-click="sendBase(oBase)"><i class="fa fa-plus"></i></button>
+              <button class="btn orange darken-2 col s12" ng-click="sendBase(oBase)"><i class="fa fa-plus"></i></button>
             </div>
-  
+            
           </div>
         </div>
       </div>
 
-    <div class="collection col s12">
+  </div>  
+
+
+
+  <div class="collection col s8 right">
       <p class="collection-item">
         <i class="fa fa-magnificient right"></i>
           <input ng-model="search" placeholder="Pesquisar Bases" type="text">
       </p>
-    </div>
-  
-  </div>  
+  </div>
 
-    <div class="collection col s8 offset-s2" ng-repeat="base in bases | filter:search" >
-      <a href="javascript:void(0)" ng-click="showDescricao = !showDescricao" class="collection-item purple white-text"><b>{{base.codbase}} - {{base.nome}}</b>
-        <!-- <span class="yellow darken-2 new badge" style="max-width: 100px; text-overflow: hidden;" data-badge-caption="">{{base.keywords}}</span> -->
-        <i class="fa fa-times right" ng-click="deleteBase(base.codbase)"></i>
-          <a href="" ng-show="showDescricao" class="collection-item" ng-bind-html="base.descricao"></p>
-      </a>
-    </div>
+
+  <div class="collection col s8 right" ng-repeat="base in bases | filter:search"  >
+    <a href="javascript:void(0)" ng-click="showDescricao = !showDescricao" class="collection-item"><b>{{base.codbase}} - {{base.nome}}</b>
+      <!-- <span class="yellow darken-2 new badge" style="max-width: 100px; text-overflow: hidden;" data-badge-caption="">{{base.keywords}}</span> -->
+      <i class="fa fa-times right" ng-click="deleteBase(base.codbase)"></i>
+        <a href="" ng-show="showDescricao" class="collection-item" ng-bind-html="base.descricao"></p>
+    </a>
+  </div>
+
+
 
   </div>
 </div>

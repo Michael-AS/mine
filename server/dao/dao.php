@@ -16,7 +16,8 @@ function getBases(){
 
 
 function getTarefas(){
-	$sQuery = "SELECT * FROM tarefas ORDER BY dia DESC";
+
+	$sQuery = "SELECT * FROM tarefas WHERE coduser = " . $_SESSION['user'][0]['coduser'] . " ORDER BY dia DESC";
 	$oStmt = mysql_query($sQuery) or die($sQuery . mysql_error()); 
 	$aResult = array();
 
@@ -32,7 +33,7 @@ function getTarefas(){
 
 
 function getHoras(){
-	$sQuery = "SELECT * FROM horas ORDER BY dtcadastro DESC";
+	$sQuery = "SELECT * FROM horas WHERE coduser = " . $_SESSION['user'][0]['coduser'] . " ORDER BY dtcadastro DESC";
 	$oStmt = mysql_query($sQuery) or die($sQuery . mysql_error()); 
 	$aResult = array();
 
@@ -44,7 +45,7 @@ function getHoras(){
 }
 
 function getCustos(){
-	$sQuery = "SELECT * FROM custos ORDER BY dtcadastro DESC";
+	$sQuery = "SELECT * FROM custos WHERE coduser = " . $_SESSION['user'][0]['coduser'] . " ORDER BY dtcadastro DESC";
 	$oStmt = mysql_query($sQuery) or die($sQuery . mysql_error()); 
 	$aResult = array();
 
@@ -54,14 +55,12 @@ function getCustos(){
 	echo json_encode($aResult);
 }
 
-function getTotal($aDados){
-		die(print_r($aDados));
-	$sQuery = "SELECT SUM(" . $aDados->field . ") as total FROM '" . $aDados->table . "' ORDER BY dtcadastro DESC";
+function getTotal($aDados){		
+	$sQuery = "SELECT ROUND(SUM(" . $aDados->oDados->field . "),2) as total FROM " . $aDados->oDados->table . " ORDER BY dtcadastro DESC";
 
-	die($sQuery);
 	$oStmt = mysql_query($sQuery) or die($sQuery . mysql_error()); 
 	$fResult = mysql_result($oStmt, 0);
 
-	echo json_encode($fResult);
+	echo $fResult;
 }
 ?>

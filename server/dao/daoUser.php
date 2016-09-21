@@ -12,8 +12,9 @@ function userAuth($aDados){
 		if ($oResult->password == $aDados->oUser->password) {
 
 			$_SESSION['user'] = loadUser($oResult->email);
-
+			
 			echo json_encode($_SESSION['user']);
+			
 		}		
 	}
 }
@@ -38,5 +39,9 @@ function verificaUserSession(){
 	}
 }
 
+function userLogout(){
+	echo "Session Destroy";
+	session_destroy();
+}
 
 ?>

@@ -9,6 +9,7 @@ function inputHora($aDados){
 	$sQuery = "INSERT INTO horas SET "
 						."descricao = '" . stringDecode($aDados->oHora->descricao) . "', "					
 						."horas = '" . $aDados->oHora->horas . ":00:00', "
+						."coduser = '" . $_SESSION['user'][0]['coduser'] . "', "
 						."dtcadastro = NOW()";								
 											
 	mysql_query($sQuery) or die($sQuery . mysql_error()); 

@@ -9,6 +9,7 @@ function inputCusto($aDados){
 	$sQuery = "INSERT INTO custos SET "
 						."descricao = '" . stringDecode($aDados->oCusto->descricao) . "', "					
 						."valor = '" . $aDados->oCusto->valor . "', "
+						."coduser = '" . $_SESSION['user'][0]['coduser'] . "', "
 						."dtcadastro = NOW()";								
 											
 	mysql_query($sQuery) or die($sQuery . mysql_error()); 
