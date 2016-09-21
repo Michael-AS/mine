@@ -16,6 +16,7 @@ include("daoTarefa.php");
 include("daoCusto.php");
 include("daoHora.php");
 include("daoUser.php");
+include("daoBase.php");
 
 
 function decodeUT8Array($a) {

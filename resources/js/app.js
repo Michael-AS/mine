@@ -1,4 +1,4 @@
-﻿var app = angular.module('mine', ['ui.router','ngMask','720kb.datepicker'])
+﻿var app = angular.module('mine', ['ui.router','ngMask','720kb.datepicker','ngSanitize'])
 
 .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("app/Home");
@@ -11,6 +11,11 @@
         .state('menu.home', {
           url: "/Home",
           templateUrl: "views/home.html",
+          controller: "homeCtrl"
+        })           
+        .state('menu.base', {
+          url: "/Base",
+          templateUrl: "views/base.html",
           controller: "homeCtrl"
         })             
         .state('land', {
@@ -105,6 +110,14 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
     }  
 
 
+
+    $s.getBases = function(){  
+        $s.p = 'getBases';
+        $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {            
+            $s.bases = result;
+        });
+    }   
+
     $s.getCustos = function(){  
         $s.p = 'getCustos';
         $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {
@@ -114,6 +127,7 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
         oDados = [];
         oDados.field = 'valor';
         oDados.table = 'custos';
+        console.log(oDados);
 
         $s.total_custo = $s.getTotal(oDados);
     }   
@@ -131,6 +145,15 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
             $s.horas = result;
         }); 
     }
+
+
+    $s.sendBase = function(oBase){
+        $s.p = 'inputBase';
+        $http.post("server/dao/redirect.php?p=" + $s.p, {
+            oBase: oBase
+        }).success($s.getBases());
+        oBase = [];        
+    }  
 
     $s.sendHora = function(oHora){
         $s.p = 'inputHora';
@@ -180,16 +203,23 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
         $s.p = 'deleteTarefa';
         $http.post("server/dao/redirect.php?p=" + $s.p, codtarefa).success($s.getTarefas());
         
+    }         
+
+    $s.deleteBase = function(codbase){
+        $s.p = 'deleteBase';
+        $http.post("server/dao/redirect.php?p=" + $s.p, codbase).success($s.getBases());
+        
     }     
 
-    $s.changeTarefa = function(codtarefa){
-        $s.p = 'changeTarefa';
-        $http.post("server/dao/redirect.php?p=" + $s.p, codtarefa).success($s.getTarefas());
-    }
+    // $s.changeTarefa = function(codtarefa){
+    //     $s.p = 'changeTarefa';
+    //     $http.post("server/dao/redirect.php?p=" + $s.p, codtarefa).success($s.getTarefas());
+    // }
 
     $s.getCustos();
     $s.getTarefas();
     $s.getHoras();
+    $s.getBases();
 
 }]);
 

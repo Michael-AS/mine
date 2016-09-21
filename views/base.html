@@ -1,0 +1,54 @@
+﻿<div class="user" ng-controller="homeCtrl">
+  <div class="row">
+
+    <!-- BASE -->
+    <div class="row col s8 offset-s2">
+
+      <div class="collection orange darken-2 white-text" ng-click="getBases()">
+        <li class="collection-header">
+          <h5>Base Infos</h5>
+        </li>
+      </div>
+
+      <div class="card">
+        <div class="card-content">
+          <div class="row">
+
+            <div class="input-field">
+              <input value="" ng-model="oBase.nome" type="text" placeholder="Nome" class="validate col s12">
+              
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">                      
+                      <textarea ng-model="oBase.descricao" class="materialize-textarea"></textarea>
+                      <label>Descrição</label>
+                    </div>
+                  </div>
+                </form>
+
+              <button class="btn orange darken-2 col s1" ng-click="sendBase(oBase)"><i class="fa fa-plus"></i></button>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+
+    <div class="collection col s12">
+      <p class="collection-item">
+        <i class="fa fa-magnificient right"></i>
+          <input ng-model="search" placeholder="Pesquisar Bases" type="text">
+      </p>
+    </div>
+  
+  </div>  
+
+    <div class="collection col s8 offset-s2" ng-repeat="base in bases | filter:search" >
+      <a href="javascript:void(0)" ng-click="showDescricao = !showDescricao" class="collection-item purple white-text"><b>{{base.codbase}} - {{base.nome}}</b>
+        <!-- <span class="yellow darken-2 new badge" style="max-width: 100px; text-overflow: hidden;" data-badge-caption="">{{base.keywords}}</span> -->
+        <i class="fa fa-times right" ng-click="deleteBase(base.codbase)"></i>
+          <a href="" ng-show="showDescricao" class="collection-item" ng-bind-html="base.descricao"></p>
+      </a>
+    </div>
+
+  </div>
+</div>

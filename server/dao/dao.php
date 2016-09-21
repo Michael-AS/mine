@@ -1,5 +1,20 @@
 <?
 
+function getBases(){
+	$sQuery = "SELECT * FROM bases ORDER BY dtcadastro DESC";
+	$oStmt = mysql_query($sQuery) or die($sQuery . mysql_error()); 
+	$aResult = array();
+
+	while($oResult = mysql_fetch_object($oStmt)){
+		$oResult->descricao = base64_decode($oResult->descricao);
+		$oResult->keywords = base64_decode($oResult->keywords);
+		array_push($aResult, encodeUT8Array($oResult));
+	}
+
+	echo json_encode($aResult);
+}
+
+
 function getTarefas(){
 	$sQuery = "SELECT * FROM tarefas ORDER BY dia DESC";
 	$oStmt = mysql_query($sQuery) or die($sQuery . mysql_error()); 
