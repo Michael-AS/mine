@@ -4,7 +4,7 @@
     <!-- BASE -->
     <div class="row col s4">
 
-      <div class="collection orange darken-2 white-text" ng-click="getBases()">
+      <div class="collection blue darken-3 darken-2 white-text" ng-click="getBases()">
         <li class="collection-header">
           <h5>Base Infos</h5>
         </li>
@@ -26,7 +26,7 @@
                   </div>
                 </form>
 
-              <button class="btn orange darken-2 col s12" ng-click="sendBase(oBase)"><i class="fa fa-plus"></i></button>
+              <button class="btn blue darken-3 darken-2 col s12" ng-click="sendBase(oBase)"><i class="fa fa-plus"></i></button>
             </div>
             
           </div>
@@ -37,7 +37,7 @@
 
 
 
-  <div class="collection col s8 right">
+  <div class="collection col s8">
       <p class="collection-item">
         <i class="fa fa-magnificient right"></i>
           <input ng-model="search" placeholder="Pesquisar Bases" type="text">
@@ -45,13 +45,26 @@
   </div>
 
 
+
+  <ul class="collapsible col s8" data-collapsible="accordion">
+    <li ng-repeat="base in bases | filter:search">
+      <div class="collapsible-header">
+      <!-- <i class="material-icons">filter_drama</i>First -->
+      {{base.nome}}
+      </div>
+      <div class="collapsible-body"><p>{{base.descricao}}</p></div>
+    </li>
+  </ul>
+
+
+<!-- 
   <div class="collection col s8 right" ng-repeat="base in bases | filter:search"  >
     <a href="javascript:void(0)" ng-click="showDescricao = !showDescricao" class="collection-item"><b>{{base.codbase}} - {{base.nome}}</b>
-      <!-- <span class="yellow darken-2 new badge" style="max-width: 100px; text-overflow: hidden;" data-badge-caption="">{{base.keywords}}</span> -->
+      <span class="yellow darken-2 new badge" style="max-width: 100px; text-overflow: hidden;" data-badge-caption="">{{base.keywords}}</span>
       <i class="fa fa-times right" ng-click="deleteBase(base.codbase)"></i>
         <a href="" ng-show="showDescricao" class="collection-item" ng-bind-html="base.descricao"></p>
     </a>
-  </div>
+  </div> -->
 
 
 

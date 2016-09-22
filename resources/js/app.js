@@ -55,6 +55,15 @@
 });
 
 app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {
+    $(document).ready(function(){
+        $('.collapsible').collapsible({
+          accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+    });
+}]);
+
+app.controller("landCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {
+
 
 }]);
 
@@ -183,7 +192,6 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
         $s.p = 'changeTarefa';
         $http.post("server/dao/redirect.php?p=" + $s.p, codtarefa).success($s.getTarefas());
     }
-
 
 
     $s.getCustos();
