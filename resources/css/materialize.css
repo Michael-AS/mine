@@ -3142,7 +3142,7 @@ td, th {
 }
 
 .collection .collection-item.active {
-  background-color: grey;
+  background-color: #1b5e20;
   color: #eafaf9;
 }
 

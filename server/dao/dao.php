@@ -10,7 +10,7 @@ function getBases(){
 		$oResult->keywords = base64_decode($oResult->keywords);
 		array_push($aResult, encodeUT8Array($oResult));
 	}
-
+	
 	echo json_encode($aResult);
 }
 

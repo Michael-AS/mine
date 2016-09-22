@@ -1,6 +1,6 @@
 <nav ng-controller="menuCtrl">
 
-  <div class="nav-wrapper purple darken-2" ng-controller="userCtrl">
+  <div class="nav-wrapper indigo" ng-controller="userCtrl">
     <a href="#" class="brand-logo"></a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li><a href="#Home"><b>Pessoal</b></a></li>
@@ -9,8 +9,7 @@
 
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li ng-click="userLogout(); root.user = {}"><a href="#Login"><i class="fa fa-user"></i></a></li>
-      <li><a href="#Login"><b>{{user.inicial}} - asd</b></a></li>
-      <li ng-click="teste()"><a href="javascript:void(0)"><b>teste</b></a></li>
+      <li><a href="#Login"><b>{{user.inicial}}</b></a></li>
     </ul>
 
   </div>

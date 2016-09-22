@@ -16,7 +16,7 @@ function inputBase($aDados){
 	$sQuery = "INSERT INTO bases SET "
 						."nome = '" . stringDecode($aDados->oBase->nome) . "', "					
 						."descricao = '" . stringDecode($aDados->oBase->descricao) . "', "
-						."keywords = '" . $aDados->oBase->keywords . "', "
+						."keywords = '" . stringDecode($aDados->oBase->keywords) . "', "
 						."dtcadastro = NOW()";								
 											
 	mysql_query($sQuery) or die($sQuery . mysql_error()); 
