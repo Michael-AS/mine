@@ -6,9 +6,9 @@ function inputTarefa($aDados){
 	echo '<pre>';
 	print_r($aDados->oTarefa);
 
-	$explode = explode('/', $aDados->oTarefa->dia);
 	// $aDados->oTarefa->dia = $explode['2'] . '-' . $explode['1'] . '-' . $explode['0']; 
 
+	$explode = explode('/', $aDados->oTarefa->dia);
 	$aDados->oTarefa->dia = implode('-', array_reverse($explode)); 
 
 	$sQuery = "INSERT INTO tarefas SET "

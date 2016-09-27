@@ -3091,6 +3091,12 @@ td, th {
   position: relative;
 }
 
+.collection b{
+  text-overflow: hidden;
+  position: fixed;
+}
+
+
 .collection .collection-item {
   background-color: #fff;
   line-height: 1.5rem;
@@ -3192,7 +3198,7 @@ span.badge {
   line-height: inherit;
   color: #757575;
   position: absolute;
-  right: 15px;
+  right: 40px;
   box-sizing: border-box;
 }
 
@@ -3202,7 +3208,7 @@ span.badge.new {
   color: #fff;
   background-color: #26a69a;
   border-radius: 2px;
-  margin-right: 35px;
+  /*margin-right: 35px;*/
 }
 
 span.badge.new:after {
@@ -5401,6 +5407,7 @@ button.btn-floating {
   display: none;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
+  padding: 10px;
 }
 
 .collapsible-body p {

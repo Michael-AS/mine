@@ -22,6 +22,11 @@
           url: "/Land",
           templateUrl: "views/land.html",
           controller: "landCtrl"
+        })           
+        .state('menu.adm', {
+          url: "/Adm",
+          templateUrl: "views/adm.html",
+          controller: "admCtrl"
         })        
         .state('login', {
           url: "/Login",
@@ -52,7 +57,67 @@
         febDate.setDate(30);
         return febDate.toDateString();
     };
-});
+})
+
+
+app.controller("userCtrl", ['$scope', '$http', '$rootScope','$location', function ($s, $http, $rs, $location) {            
+       
+    $s.showToast = function(message){
+        Materialize.toast(message, 3000);
+    };
+
+   $s.goRota = function(rota){ 
+        if (rota) {
+            $location.path(rota);
+        }
+    };
+
+    $s.userAuth = function(oUser){          
+        $s.p = 'userAuth';
+        $http.post("server/dao/redirect.php?p=" + $s.p, {
+            oUser: oUser
+        }).success(function(result){
+            console.log(result);
+            $rs.user = result;
+            if ($rs.user) { 
+                $s.goRota('/Home');
+            } else {
+                $s.showToast('Usuário ou senha inválidos.');
+            }
+        });
+    }
+
+    $s.verificaUserSession = function(){
+        $s.p = 'verificaUserSession';
+        $http.get("server/dao/redirect.php?p=" + $s.p).then(function (result) {  
+
+            if (result != 'false') {                    
+                $rs.user = result[0];
+            } else {
+                $s.goRota('/Login');                
+            }
+            
+        });
+    };
+
+    $s.verificaUserSession();
+
+    $s.userLogout = function(){
+        $s.p = 'userLogout';
+        $http.post("server/dao/redirect.php?p=" + $s.p).success($s.goRota('/Login')); 
+    }
+
+    // $s.userAuth = function(oUser){            
+    //     $s.p = 'userAuth';
+    //     $http.post("server/dao/redirect.php?p=" + $s.p, {
+    //         oUser: oUser            
+    //     });
+    //     $s.goRota('Home');        
+    // };   
+
+    console.log($rs.user);
+}]);
+
 
 app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {
     $(document).ready(function(){
@@ -64,7 +129,18 @@ app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', func
 
 app.controller("landCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {
 
+}]);
 
+app.controller("admCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {
+
+        $s.getHorasAll = function(){  
+            $s.p = 'getHorasAll';
+            $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {            
+                $s.users_tarefas = result;
+            });
+        }   
+
+        $s.getHorasAll();
 }]);
 
 app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', function ($s, $http, $rs, $location) {            
@@ -132,7 +208,9 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
         $s.p = 'inputBase';
         $http.post("server/dao/redirect.php?p=" + $s.p, {
             oBase: oBase
-        }).success($s.getBases());
+        }).success(function(result){
+            $s.getBases();
+        });
         oBase = [];        
     }  
 
@@ -185,7 +263,9 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
 
     $s.deleteBase = function(codbase){
         $s.p = 'deleteBase';
-        $http.post("server/dao/redirect.php?p=" + $s.p, codbase).success($s.getBases());  
+        $http.post("server/dao/redirect.php?p=" + $s.p, codbase).success(function(result){
+            $s.getBases();
+        });  
     }     
 
     $s.changeTarefa = function(codtarefa){
@@ -199,67 +279,6 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
     $s.getHoras();
     $s.getBases();
 
-}]);
-
-app.controller("userCtrl", ['$scope', '$http', '$rootScope','$location', function ($s, $http, $rs, $location) {            
-    
-
-    $s.teste = function(){
-        console.log($rs.user);
-    }
-        
-    $s.showToast = function(message){
-        Materialize.toast(message, 3000);
-    };
-
-   $s.goRota = function(rota){ 
-        if (rota) {
-            $location.path(rota);
-        }
-    };
-
-    $s.userAuth = function(oUser){          
-        $s.p = 'userAuth';
-        $http.post("server/dao/redirect.php?p=" + $s.p, {
-            oUser: oUser
-        }).success(function(result){
-            console.log(result);
-            $rs.user = result;
-            if ($rs.user) { 
-                $s.goRota('/Home');
-            } else {
-                $s.showToast('Usuário ou senha inválidos.');
-            }
-        });
-    }
-
-    $s.verificaUserSession = function(){
-        $s.p = 'verificaUserSession';
-        $http.get("server/dao/redirect.php?p=" + $s.p).then(function (result) {  
-            if (result != 'false') {                    
-                $rs.user = result[0];
-            } else {
-                $s.goRota('/Login');                
-            }
-        });
-    };
-
-    $s.verificaUserSession();
-
-    $s.userLogout = function(){
-        $s.p = 'userLogout';
-        $http.post("server/dao/redirect.php?p=" + $s.p).success($s.goRota('/Login')); 
-    }
-
-    // $s.userAuth = function(oUser){            
-    //     $s.p = 'userAuth';
-    //     $http.post("server/dao/redirect.php?p=" + $s.p, {
-    //         oUser: oUser            
-    //     });
-    //     $s.goRota('Home');        
-    // };   
-
-    console.log($rs.user);
 }]);
 
 

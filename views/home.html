@@ -1,3 +1,4 @@
+<div ng-controller="userCtrl">
 <div class="user" ng-controller="homeCtrl">
 
 <div class="row">
@@ -16,9 +17,14 @@
       <div class="card-content">
         <div class="row">
           <div class="input-field">
-            <input value="" ng-model="oHora.descricao" type="text" placeholder="Descrição" class="validate col s5">
-            <input value="" ng-model="oHora.horas" type="text" placeholder="Horas" class="validate col s5">                
-            <button class="btn green col s2" ng-click="sendHora(oHora)"><i class="fa fa-plus"></i></button>
+            <input value="" ng-model="oHora.descricao" type="text" placeholder="Descrição" class="validate col s6">
+            <input value="" ng-model="oHora.horas" type="text" placeholder="Horas" class="validate col s3">                
+            
+              <datepicker class="col s3" date-format="dd/MM/yyyy">
+                <input value="" ng-model="oHora.dia" type="text" placeholder="Data">
+              </datepicker>
+
+            <button class="btn green col s12" ng-click="sendHora(oHora)"><i class="fa fa-plus"></i></button>
           </div>
         </div>
       </div>
@@ -31,6 +37,7 @@
   </div>
 
 </div>      
+
 
 <!-- TAREFAS -->
 <div class="row col l6 s12">
@@ -50,11 +57,11 @@
           <div class="input-field">
             <input value="" ng-model="oTarefa.descricao" type="text" placeholder="Descrição" class="validate col s8">
 
-              <datepicker class="col s2" date-format="dd/MM/yyyy">
+              <datepicker class="col s4" date-format="dd/MM/yyyy">
                 <input value="" ng-model="oTarefa.dia" type="text" placeholder="Data">
               </datepicker>
 
-            <button class="btn blue col s2" ng-click="sendTarefa(oTarefa)"><i class="fa fa-plus"></i></button>
+            <button class="btn blue col s12" ng-click="sendTarefa(oTarefa)"><i class="fa fa-plus"></i></button>
           </div>
         </div>
       </div>
@@ -92,9 +99,9 @@
       <div class="card-content">
          <div class="row">             
           <div class="input-field">
-            <input value="" ng-model="oCusto.descricao" type="text" placeholder="Descrição" class="validate col s5">
-            <input value="" ng-model="oCusto.valor" type="text" placeholder="Valor" class="validate col s5">
-            <button class="btn red col s2" ng-click="sendCusto(oCusto)"><i class="fa fa-plus"></i></button>
+            <input value="" ng-model="oCusto.descricao" type="text" placeholder="Descrição" class="validate col s6">
+            <input value="" ng-model="oCusto.valor" type="text" placeholder="Valor" class="validate col s6">
+            <button class="btn red col s12" ng-click="sendCusto(oCusto)"><i class="fa fa-plus"></i></button>
           </div>
         </div>
       </div>
@@ -108,9 +115,7 @@
 
 </div>
 
-
-
-
+</div>
 
 </div>
 
