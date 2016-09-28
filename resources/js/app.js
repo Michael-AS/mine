@@ -125,26 +125,8 @@ app.controller("homeCtrl", ['$scope', '$http', '$rootScope','DateProvider', func
           accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
         });
     });
-}]);
 
-app.controller("landCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {
 
-}]);
-
-app.controller("admCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {
-
-        $s.getHorasAll = function(){  
-            $s.p = 'getHorasAll';
-            $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {            
-                $s.users_tarefas = result;
-            });
-        }   
-
-        $s.getHorasAll();
-}]);
-
-app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', function ($s, $http, $rs, $location) {            
-        
     $s.teste = function(){
         console.log($rs.user);
     }
@@ -211,32 +193,39 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
         }).success(function(result){
             $s.getBases();
         });
-        oBase = [];        
+        oBase = {};        
     }  
 
-    $s.sendHora = function(oHora){
+    $s.sendHora = function(oHora){    
         $s.p = 'inputHora';
         $http.post("server/dao/redirect.php?p=" + $s.p, {
             oHora: oHora
-        }).success($s.getHoras());
-        oHora = [];        
-    }    
+        }).success(function(result){
+            $s.getHoras();
+            $s.oHora.descricao = '';        
+            $s.oHora.horas = '';        
+        });
+    }
 
     $s.sendCusto = function(oCusto){
         console.log(oCusto);
         $s.p = 'inputCusto';
         $http.post("server/dao/redirect.php?p=" + $s.p, {
             oCusto: oCusto
-        }).success($s.getCustos());
-        oCusto = [];
+        }).success(function(result){
+            $s.getCustos();
+            $s.oCusto = {};
+        });
     }    
 
     $s.sendTarefa = function(oTarefa){
         $s.p = 'inputTarefa';
         $http.post("server/dao/redirect.php?p=" + $s.p, {
             oTarefa: oTarefa
-        }).success($s.getTarefas());
-        oTarefa = [];
+        }).success(function(result){
+            $s.getTarefas();
+            $s.oTarefa.descricao = '';
+        });
     }     
 
     
@@ -278,6 +267,26 @@ app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', functio
     $s.getTarefas();
     $s.getHoras();
     $s.getBases();
+}]);
+
+app.controller("landCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {
+
+}]);
+
+app.controller("admCtrl", ['$scope', '$http', '$rootScope','DateProvider', function ($s, $http, $rs, Date) {
+
+        $s.getHorasAll = function(){  
+            $s.p = 'getHorasAll';
+            $http.get("server/dao/redirect.php?p="+$s.p).success(function(result) {            
+                $s.users_tarefas = result;
+            });
+        }   
+
+        $s.getHorasAll();
+}]);
+
+app.controller("menuCtrl", ['$scope', '$http', '$rootScope','$location', function ($s, $http, $rs, $location) {            
+
 
 }]);
 

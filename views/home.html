@@ -15,18 +15,19 @@
   <div class="">
     <div class="card">
       <div class="card-content">
-        <div class="row">
-          <div class="input-field">
-            <input value="" ng-model="oHora.descricao" type="text" placeholder="Descrição" class="validate col s6">
-            <input value="" ng-model="oHora.horas" type="text" placeholder="Horas" class="validate col s3">                
-            
+        <form class="row">
+            <div class="input-field">
+
               <datepicker class="col s3" date-format="dd/MM/yyyy">
                 <input value="" ng-model="oHora.dia" type="text" placeholder="Data">
               </datepicker>
 
-            <button class="btn green col s12" ng-click="sendHora(oHora)"><i class="fa fa-plus"></i></button>
-          </div>
-        </div>
+              <input value="" ng-model="oHora.descricao" type="text" placeholder="Descrição" class="validate col s6">
+              <input value="" ng-model="oHora.horas" type="text" placeholder="Horas" class="validate col s3">                            
+            
+              <button ng-show="false" type="submit" class="btn green col s12" ng-click="sendHora(oHora)"><i class="fa fa-plus"></i></button>
+            </div>
+        </form>
       </div>
     </div>
   </div>  
@@ -53,17 +54,16 @@
   <div class="">
     <div class="card">
       <div class="card-content">
-         <div class="row">
+         <form class="row">
           <div class="input-field">
-            <input value="" ng-model="oTarefa.descricao" type="text" placeholder="Descrição" class="validate col s8">
-
-              <datepicker class="col s4" date-format="dd/MM/yyyy">
+              <datepicker class="col s2" date-format="dd/MM/yyyy">
                 <input value="" ng-model="oTarefa.dia" type="text" placeholder="Data">
               </datepicker>
 
-            <button class="btn blue col s12" ng-click="sendTarefa(oTarefa)"><i class="fa fa-plus"></i></button>
+              <input value="" ng-model="oTarefa.descricao" type="text" placeholder="Descrição" class="validate col s10">
+            <button ng-show="false" type="submit" class="btn blue col s12" ng-click="sendTarefa(oTarefa)"><i class="fa fa-plus"></i></button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>     
@@ -97,13 +97,13 @@
   <div class="">
     <div class="card">
       <div class="card-content">
-         <div class="row">             
+         <form class="row">             
           <div class="input-field">
             <input value="" ng-model="oCusto.descricao" type="text" placeholder="Descrição" class="validate col s6">
             <input value="" ng-model="oCusto.valor" type="text" placeholder="Valor" class="validate col s6">
-            <button class="btn red col s12" ng-click="sendCusto(oCusto)"><i class="fa fa-plus"></i></button>
+            <button ng-show="false" type="submit" class="btn red col s12" ng-click="sendCusto(oCusto)"><i class="fa fa-plus"></i></button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
